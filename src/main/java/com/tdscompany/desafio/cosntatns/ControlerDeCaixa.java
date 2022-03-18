@@ -1,5 +1,5 @@
 package com.tdscompany.desafio.cosntatns;
 
-public enum Classe {
+public enum ControlerDeCaixa {
     ENTRADA, SAIDA
 }
