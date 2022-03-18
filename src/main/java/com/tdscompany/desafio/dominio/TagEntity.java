@@ -1,2 +1,4 @@
-package com.tdscompany.desafio.dominio;public class TagEntity {
+package com.tdscompany.desafio.dominio;
+
+public class TagEntity {
 }
