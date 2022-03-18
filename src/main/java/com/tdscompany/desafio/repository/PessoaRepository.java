@@ -1,4 +1,9 @@
 package com.tdscompany.desafio.repository;
 
-public interface Repository {
+import com.tdscompany.desafio.dominio.PessoaEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface PessoaRepository extends JpaRepository<PessoaEntity, String> {
 }
