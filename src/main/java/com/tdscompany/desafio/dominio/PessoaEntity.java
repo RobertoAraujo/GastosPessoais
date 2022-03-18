@@ -13,8 +13,11 @@ public class PessoaEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Integer  id;
+
     @Column(name = "cpf")
-    private Long cpf;
+    private String cpf;
 
     @Column (name = "nome")
     private String nome;
@@ -25,11 +28,26 @@ public class PessoaEntity implements Serializable {
     public PessoaEntity() {
     }
 
-    public Long getCpf() {
+    public PessoaEntity(Integer id, String cpf, String nome, Sexo sexo) {
+        this.id = id;
+        this.cpf = cpf;
+        this.nome = nome;
+        this.sexo = sexo;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(Long cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 
@@ -54,18 +72,19 @@ public class PessoaEntity implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         PessoaEntity that = (PessoaEntity) o;
-        return Objects.equals(cpf, that.cpf) && Objects.equals(nome, that.nome) && sexo == that.sexo;
+        return Objects.equals(id, that.id) && Objects.equals(cpf, that.cpf) && Objects.equals(nome, that.nome) && sexo == that.sexo;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(cpf, nome, sexo);
+        return Objects.hash(id, cpf, nome, sexo);
     }
 
     @Override
     public String toString() {
         return "PessoaEntity{" +
-                "cpf='" + cpf + '\'' +
+                "id=" + id +
+                ", cpf='" + cpf + '\'' +
                 ", nome='" + nome + '\'' +
                 ", sexo=" + sexo +
                 '}';

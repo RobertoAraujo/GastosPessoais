@@ -1,8 +1,22 @@
-CREATE TABLE "DEC_CATEGORIA" ( "ID" NUMBER(3),
-"ABREVIATURA" VARCHAR2(15) NOT NULL ,
-"DESCRICAO" VARCHAR2(80) NOT NULL ,
-"OBSERVACAO" VARCHAR2(120),
-"STATUS" NUMBER(1) DEFAULT 0 NOT NULL,
-PRIMARY KEY ("ID"));
+CREATE TABLE `pessoa` (
+`id` INT PRIMARY KEY AUTO_INCREMENT,
+`cpf` VARCHAR(17),
+`nome` VARCHAR(150)
+);
 
-create sequence "SQ_DEC_CATEGORIA" MINVALUE 1 MAXVALUE 9999999999 start with 1 increment by 1 nocache;
+CREATE TABLE `tag` (
+`id` INT PRIMARY KEY AUTO_INCREMENT,
+`descricao` VARCHAR(150)
+);
+
+CREATE TABLE `financa` (
+`id` INT PRIMARY KEY AUTO_INCREMENT,
+`descricao` VARCHAR(17),
+`dataEntrada` DATETIME,
+`dataVencimento` DATE,
+`pessoa_id_pk`int,
+`tag_id_pk` int
+);
+
+ALTER TABLE `financa` ADD CONSTRAINT `tag_id_pk` FOREIGN KEY ( `id` ) REFERENCES `tag` ( `id` ) ;
+ALTER TABLE `financa` ADD CONSTRAINT `pessoa_id_pk` FOREIGN KEY ( `id` ) REFERENCES `pessoa` ( `id` ) ;
